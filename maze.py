@@ -85,7 +85,7 @@ class Maze:
             for j in range(self.num_cols()):
                 result += self._maze_cells[i, j]+" " if self._maze_cells[i, j] else "_ "
             result += "\n"
-        return result
+        return result[:-1]
 
     def _valid_move(self, row, col):
         """Returns True if the given cell position is a valid move."""
