@@ -68,6 +68,11 @@ class Maze:
             if self._exit_found(*next_pos):
                 self._mark_path(*next_pos)
                 return True
+        self.reset()
+        for i in range(self.num_rows()):
+            for j in range(self.num_cols()):
+                if self._valid_move(i, j):
+                    self._mark_tried(i, j)
 
 
     def reset(self):
@@ -85,6 +90,8 @@ class Maze:
             for j in range(self.num_cols()):
                 result += self._maze_cells[i, j]+" " if self._maze_cells[i, j] else "_ "
             result += "\n"
+        with open("str.txt", "w") as file:
+            file.write(result[:-1])
         return result[:-1]
 
     def _valid_move(self, row, col):
