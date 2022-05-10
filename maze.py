@@ -48,8 +48,9 @@ class Maze:
         """
         position = _CellPosition(self._start_cell.row, self._start_cell.col)
         move_stack = Stack()
+        move_stack.push((0, 0))
         visited = {(position.row, position.col)}
-        while True:
+        while not move_stack.is_empty():
             coords = [(position.row, position.col-1), (position.row+1, position.col),
                       (position.row, position.col+1), (position.row-1, position.col)]
             isolated = True
